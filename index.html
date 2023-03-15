@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Dashboard</title>
+    <link rel="stylesheet" href="./CSS/style.css">
+    <link rel="stylesheet" href="./CSS/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <main>
+        <header>
+            <div class="overlay overlay-lg">
+                <img src=".\Image\square.png" class="shape square" alt="">
+                <img src=".\Image\circle.png" class="shape circle" alt="">
+                <img src=".\Image\half-circle.png" class="shape half-circle1" alt="">
+                <img src=".\Image\half-circle.png" class="shape half-circle2" alt="">
+                <img src=".\Image\x.png" class="shape xshape" alt="">
+                <img src=".\Image\wave.png" class="shape wave1" alt="">
+                <img src=".\Image\wave.png" class="shape wave2" alt=""> <img src=".\Image\triangle.png"
+                    class="shape triangle" alt="">
+                <img src=".\Image\SS-removebg-preview.png" class="letters" alt="">
+                <img src=".\Image\points1.png" class="points points1" alt="">
+            </div>
+            <nav>
+                <div class="container">
+                    <div class="logo">
+                        <img src=".\Image\Untitled_design__1_-removebg-preview.png">
+                    </div>
+                    <div class="links">
+                        <ul>
+                            <li>
+                                <a href="#">Home</a>
+                            </li>
+                            <li>
+                                <a href="#about-section">About</a>
+                            </li>
+                            <li>
+                                <a href="#credit-section">Contact</a>
+                            </li>
+                            <li>
+                                <a href="http://127.0.0.1:5501/Testing%20Project%20APIs/index.html" target="_blank"
+                                    class="active">Data</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <div class="header-content">
+                <div class="container grid-2">
+                    <div class="column-1">
+                        <h1 class="header-title">Salesforce Integration</h1>
+                        <p class="text">
+                            The purpose of this project is to create an interactive dashboard using D3.js, which
+                            displays relevant Salesforce data in a visually appealing and user-friendly way. The
+                            dashboard will be developed using Java as the server-side language to fetch data from
+                            Salesforce and provide it to the frontend.
+                        </p>
+                        <a class="btn" href="#dashboard-section">Charts</a>
+                    </div>
+                    <div class="column-2 image">
+                        <img src=".\Image\points2.png" class="points points2" alt="">
+                        <img src=".\Image\fotor_2023-2-24_14_56_5.png" alt="" class="img-element z-index" />
+                    </div>
+                </div>
+            </div>
+        </header>
+        <section class="services section" id="about-section">
+            <div class="container">
+                <div class="section-header">
+                    <h3 class="title" data-title="Architectural"">Layers</h3>
+                    <p class=" text">
+                        The overall architecture of the application will consist of the following layers:
+                        </p>
+                        <div>
+                            <div class="cards">
+                                <div class="card-wrap">
+                                    <img src=".\Image\points3.png" class="points points1 points-sq" alt="">
+                                    <div class="card" data-card="UI/UX">
+                                        <div class="card-content">
+                                            <img src=".\Image\design-icon.png" class="icon" alt="">
+                                            <h3 class="title-sm">Front End</h3>
+                                            <p class="text">This layer will contain the D3.js code responsible for
+                                                creating and rendering the dashboard. The frontend will interact with
+                                                the server-side Java code to fetch data and display it in the dashboard.
+                                            </p>
+                                            <a href="#" class="btn small">Read more</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-wrap">
+                                    <div class="card" data-card="Code">
+                                        <div class="card-content">
+                                            <img src=".\Image\code-icon.png" class="icon" alt="">
+                                            <h3 class="title-sm">Back End</h3>
+                                            <p class="text">The backend layer will consist of Java code responsible for
+                                                fetching data from Salesforce and returning it to the frontend. The
+                                                backend will use Salesforce REST API to connect to the Salesforce data
+                                                and fetch the required data.</p>
+                                            <a href="#" class="btn small">Read more</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card-wrap">
+                                    <img src=".\Image\points3.png" class="points points2 points-sq" alt="">
+                                    <div class="card" data-card="Data">
+                                        <div class="card-content">
+                                            <img src=".\Image\app-icon.png" class="icon" alt="">
+                                            <h3 class="title-sm">Salesforce</h3>
+                                            <p class="text">This layer will contain the data source, i.e., the
+                                                Salesforce data that will be displayed in the dashboard. The Salesforce
+                                                data will be accessed via REST API by the Java backend layer.</p>
+                                            <a href="#" class="btn small">Read more</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </section>
+        <section class="portfolio section" id="dashboard-section">
+            <div class="background-bg">
+                <div class="overlay overlay-sm">
+                    <img src="./Image/half-circle.png" class="shape half-circle1" alt="">
+                    <img src="./Image/half-circle.png" class="shape half-circle2" alt="">
+                    <img src="./Image/square.png" class="shape square" alt="">
+                    <img src="./Image/wave.png" class="shape wave" alt="">
+                    <img src="./Image/circle.png" class="shape circle" alt="">
+                    <img src="./Image/triangle.png" class="shape triangle" alt="">
+                    <img src="./Image/x.png" class="shape xshape" alt="">
+                </div>
+            </div>
+
+            <div class="container" id="dashboard-section">
+                <div class="section-header">
+                    <h3 class="title" data-title="Interactive">Dashboard</h3>
+                </div>
+
+                <div class="section-body">
+                    <div class="filter">
+                        <a href="#main1"><button class="filter-btn active" onclick="hideShow1()">1</button></a>
+                        <a href="#main2"><button class="filter-btn" onclick="hideShow2()">2</button></a>
+                        <a href="#main3"><button class="filter-btn" onclick="hideShow3()">3</button></a>
+                        <a href="#main4"><button class="filter-btn" onclick="hideShow4()">4</button></a>
+                        <a href="#main5"><button class="filter-btn" onclick="hideShow5()">5</button></a>
+                    </div>
+                    <div class="dashboard">
+                        <div class="dashboard-container" style="display: none;" id="main1">
+                            <section id="bar-chart">
+                                <center>
+                                    <h2>1. Leads Converted by Month</h2>
+                                </center>
+                                <!--Bar Chart here-->
+                            </section>
+                            <div id="bar-chart-table">
+                                <!-- Bar chart table here -->
+                            </div>
+                        </div>
+                        <br>
+                        <div class="dashboard-container" style="display: none;" id="main2">
+
+                            <section>
+                                <center>
+                                    <h2>2. Lead Status</h2>
+                                </center>
+                                <div id="chart">
+                                    <!--SVG code here-->
+                                </div>
+                            </section>
+                            <div id="table">
+                                <!--Table code here-->
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="dashboard-container" style="display: none;" id="main3">
+                        <section>
+                            <h2>
+                                <center>3. Current leads being worked by a sales Agent</center>
+                                <br>
+                            </h2>
+                            <div id="requirement3">
+
+                            </div>
+
+                        </section>
+                    </div>
+                    <br>
+                    <div class="dashboard">
+                        <div class="dashboard-container" style="display: none;" id="main4">
+                            <section id="requirement4">
+                                <center>
+                                    <h2>4. Converted & Sales agent Worked On</h2>
+                                </center>
+                                <svg id="pie-chart" width="500" height="500">
+                                    <!-- Chart here -->
+                                </svg>
+
+                            </section>
+                            <div id="pie-table">
+                                <!-- Conversion Rate Table here -->
+                            </div>
+                        </div>
+                        <br>
+                        <div class="dashboard-container"  style="display: none;" id="main5">
+                            <div class="conversion-rate">
+
+                                <div id="funnel-chart">
+                                    <section>
+                                        <h2>
+                                            <center>5. Conversion Rate</center>
+                                        </h2>
+                                    </section>
+                                    <!-- Chart here -->
+                                </div>
+                                <div id="funnel-table">
+                                    <!-- Conversion Rate Table here -->
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <br>
+            <div class="more-folio">
+                <a href="#" class="btn">Back</a>
+            </div>
+            </div>
+            </div>
+        </section>
+        <section class="credit section" id="credit-section">
+            <div class="container">
+                <div class="section-header">
+                    <h3 class="title" data-title="Credit"">Section</h3>
+                    <p class=" text">
+                        The team involved in this project:
+                        </p>
+                        <div>
+                            <div class="cards">
+                                <div class="card-wrap">
+                                    <img src=".\Image\points3.png" class="points points1 points-sq" alt="">
+                                    <div class="card" data-card="1">
+                                        <div class="card-content">
+                                            <img src=".\Image\Sanket1.jpg" class="photo" alt="">
+                                            <h3 class="title-sm">Shrusti Sanket</h3>
+                                            <p class="text">System Trainee, Credex Technology</p>
+                                            <p class="text"><a
+                                                    href="https://www.linkedin.com/in/shrusti-sanket-196a961b1/"
+                                                    class="btn small" target="_bank">LinkedIn</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-wrap">
+                                    <div class="card" data-card="2">
+                                        <div class="card-content">
+                                            <img src=".\Image\Darshan.jpg" class="photo" alt="">
+                                            <h3 class="title-sm">Darshan Yadav</h3>
+                                            <p class="text">System Trainee, Credex Technology</p>
+                                            <p class="text">
+                                                <a href="https://www.linkedin.com/in/darshan-yadav-30jan/"
+                                                    class="btn small" target="_blank">LinkedIn</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card-wrap">
+                                    <img src=".\Image\points3.png" class="points points2 points-sq" alt="">
+                                    <div class="card" data-card="3">
+                                        <div class="card-content">
+                                            <img src=".\Image\Devesh.jpg" class="photo" alt="">
+                                            <h3 class="title-sm">Devesh Choudhary</h3>
+                                            <p class="text">System Trainee, Credex Technology</p>
+                                            <p class="text">
+                                                <a href="https://www.linkedin.com/in/devesh-choudhary-ba0b12192/"
+                                                    class="btn small" target="_blank">LinkedIn</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+        </section>
+    </main>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="./JS/index.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="./JS/isotope.pkgd.min.js"></script>
+    <script src="./JS/app.js"></script>
+</body>
+
+</html>
