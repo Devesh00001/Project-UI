@@ -23,6 +23,7 @@ h2{
     flex-wrap: nowrap;
     scroll-behavior: smooth;
     transition-duration: 0.5s;
+    justify-content: center;
 
 }
 

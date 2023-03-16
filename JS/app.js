@@ -1,9 +1,26 @@
+
+// history.pushState(null, null, location.href);
+// window.onpopstate = function () {
+//     history.go(1);
+// };
+
+// // Disable the back button to prevent the user from going back to the logged-out page
+//     history.pushState(null, null, location.href);
+//     window.onpopstate = function(event) {
+//         history.go(1);
+//     };
+//     // Break the session by redirecting the user to the login page
+//     window.location.href = 'http://127.0.0.1:5501/index.html';
+
 const filter_btns = document.querySelectorAll(".filter-btn");
 
 filter_btns.forEach((btn) => {
     btn.addEventListener("click", () => {
         filter_btns.forEach(button => button.classList.remove("active"));
         btn.classList.add('active');
+        setTimeout(function() {
+            btn.classList.remove('active');
+          }, 2000);
 
         let filterValue = btn.dataset.filter;
 
@@ -151,6 +168,13 @@ function hideShow5()
 // }
 
 
+function logout() {
+    // Clear the user's session
+    sessionStorage.clear();
+    
+    // Redirect to the login page
+    window.location.href = "http://localhost:8080/";
+  }
 
 
 

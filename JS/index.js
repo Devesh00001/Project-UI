@@ -5,19 +5,27 @@ const api = 'http://localhost:8080/leadsconverted';
 d3.json(api)
   .then(function (items) {
     const data = items.map(d => d.CreatedDate);
-    //console.log(data);
-
-    const monthNumbers = data.map(date => {
-      const dateObj = new Date(date);
-      return dateObj.getMonth();
-    })
-    //console.log(monthNumbers);
+    // console.log(data);
 
     const counts = {};
-    monthNumbers.forEach(function (d) {
-      counts[d] = counts[d] + 1 || 1;
+
+    data.forEach(dateStr => {
+      const date = new Date(dateStr);
+      const monthNum = date.getMonth();
+      const monthName = new Intl.DateTimeFormat('en-US', { month: 'long' }).format(date);
+
+      if (monthName in counts) {
+        counts[monthName]++;
+      } else {
+        counts[monthName] = 1;
+      }
     });
-    //console.log(counts);
+
+    const sortedCounts = Object.entries(counts)
+      .sort((a, b) => b[1] - a[1])
+      .reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {});
+
+    console.log(sortedCounts);
 
     // Set the dimensions and margins of the graph
     const margin = { top: 10, right: 30, bottom: 30, left: 60 };
@@ -38,7 +46,7 @@ d3.json(api)
     const x = d3
       .scaleBand()
       .range([0, width])
-      .domain(Object.keys(monthNumbers))
+      .domain(Object.keys(sortedCounts))
       .padding(0.2);
 
     // Define the y scale
@@ -47,7 +55,7 @@ d3.json(api)
     // Draw the bars
     svg
       .selectAll("rect")
-      .data(Object.entries(counts))
+      .data(Object.entries(sortedCounts))
       .enter()
       .append("rect")
       .attr("x", ([month]) => x(month))
@@ -90,27 +98,20 @@ d3.json(api)
       .text("Leads Count");
 
     // Animate the bars
-    svg
-      .selectAll("rect")
-      .transition()
-      .duration(1500)
-      .attr("y", ([, leads]) => y(leads))
-      .attr("height", ([, leads]) => height - y(leads));
+    // svg
+    //   .selectAll("rect")
+    //   .transition()
+    //   .duration(1500)
+    var bars = svg.selectAll("rect");
+    function startTransition() {
+      bars.transition()
+        .duration(3000)
+        .attr("y", ([, leads]) => y(leads))
+        .attr("height", ([, leads]) => height - y(leads));
+    }
 
-
-    //Table of the bar-chart
-    // Count the occurrence of each data item
-    const count = d3.rollup(
-      monthNumbers,
-      v => v.length,
-      d => d + 1
-    );
-
-    // Convert count object into an array of objects with key-value pairs
-    const countArray = Array.from(count, ([key, value]) => ({ key, value }));
-
-    // Sort the count array in descending order of value
-    countArray.sort((a, b) => b.value - a.value);
+    d3.select("#button-1")
+      .on("click", startTransition);
 
     // Create a table and append it to the HTML body
     const table = d3.select("#bar-chart-table")
@@ -120,18 +121,26 @@ d3.json(api)
     // Append a header row to the table
     const header = table.append("thead")
       .append("tr");
-    header.append("th").text("Month Number");
+    header.append("th").text("Months");
     header.append("th").text("Leads Generated");
 
     // Append a row for each data item and its count
     const tbody = table.append("tbody");
-    countArray.forEach(item => {
-      const row = tbody.append("tr");
-      row.append("td").text(item.key);
-      row.append("td").text(item.value);
+    // sortedCounts.forEach(item => {
+    //   const row = tbody.append("tr");
+    //   row.append("td").text(item.key);
+    //   row.append("td").text(item.value);
+    // });
+    tbody.selectAll('tr')
+      .data(Object.entries(sortedCounts))
+      .enter()
+      .append('tr')
+      .selectAll('td')
+      .data(d => d)
+      .enter()
+      .append('td')
+      .text(d => d);
 
-
-    });
   })
   .catch(function (error) {
     console.log(error);
@@ -183,7 +192,7 @@ d3.json(api2)
     const pie = d3.pie()
       .sort(null)
       .value(function (d) { return d.value; })
-      .padAngle(.03);
+      .padAngle(0.03);
 
     // Append SVG element to the DOM
     //'#f6f7fb'
@@ -332,7 +341,8 @@ fetch(api4)
     const color = d3.scaleOrdinal(d3.schemeCategory10);
 
     const pie = d3.pie()
-      .value(d => d.value);
+      .value(d => d.value)
+      .padAngle(0.03);
 
     const arc = d3.arc()
       .outerRadius(radius * 0.8)
@@ -345,18 +355,23 @@ fetch(api4)
       .attr('class', 'arc')
       .attr('transform', `translate(${width / 2}, ${height / 2})`);
 
-    arcs.append('path')
-      .attr('d', arc)
-      .attr('fill', d => color(d.data.label))
-      .transition()
-      .duration(3000)
-      .attrTween('d', function (d) {
-        const i = d3.interpolate(d.startAngle, d.endAngle);
-        return function (t) {
-          d.endAngle = i(t);
-          return arc(d);
-        }
-      });
+    function startTransition() {
+      arcs.append('path')
+        .attr('d', arc)
+        .attr('fill', d => color(d.data.label))
+        .transition()
+        .duration(3000)
+        .attrTween('d', function (d) {
+          const i = d3.interpolate(d.startAngle, d.endAngle);
+          return function (t) {
+            d.endAngle = i(t);
+            return arc(d);
+          }
+        });
+    }
+
+    d3.select("#button-4")
+      .on("click", startTransition);
 
     const legend = svg.selectAll('.legend')
       .data(pieData)
@@ -520,10 +535,15 @@ d3.json(api5)
     // });
 
     // Add the animation
-    bars.transition()
-      .duration(3000)
-      .attr("y", function (d) { return yScale(d.Probability); })
-      .attr("height", function (d) { return height - yScale(d.Probability); });
+    function startTransition() {
+      bars.transition()
+        .duration(3000)
+        .attr("y", function (d) { return yScale(d.Probability); })
+        .attr("height", function (d) { return height - yScale(d.Probability); });
+    }
+
+    d3.select("#button-5")
+      .on("click", startTransition);
 
     //Table  
 

@@ -88,7 +88,8 @@
                                                 creating and rendering the dashboard. The frontend will interact with
                                                 the server-side Java code to fetch data and display it in the dashboard.
                                             </p>
-                                            <a href="#" class="btn small">Read more</a>
+                                            <a href=".Documents\High Level Design.docx" target="_blank"
+                                                class="btn small">Read more</a>
                                         </div>
                                     </div>
                                 </div>
@@ -101,7 +102,8 @@
                                                 fetching data from Salesforce and returning it to the frontend. The
                                                 backend will use Salesforce REST API to connect to the Salesforce data
                                                 and fetch the required data.</p>
-                                            <a href="#" class="btn small">Read more</a>
+                                            <a href=".\Documents\High Level Design.docx" target="_blank"
+                                                class="btn small">Read more</a>
                                         </div>
                                     </div>
                                 </div>
@@ -115,7 +117,8 @@
                                             <p class="text">This layer will contain the data source, i.e., the
                                                 Salesforce data that will be displayed in the dashboard. The Salesforce
                                                 data will be accessed via REST API by the Java backend layer.</p>
-                                            <a href="#" class="btn small">Read more</a>
+                                            <a href=".\Documents\High Level Design.docx" target="_blank"
+                                                class="btn small">Read more</a>
                                         </div>
                                     </div>
                                 </div>
@@ -144,12 +147,26 @@
 
                 <div class="section-body">
                     <div class="filter">
-                        <a href="#main1"><button class="filter-btn active" onclick="hideShow1()">1</button></a>
-                        <a href="#main2"><button class="filter-btn" onclick="hideShow2()">2</button></a>
-                        <a href="#main3"><button class="filter-btn" onclick="hideShow3()">3</button></a>
-                        <a href="#main4"><button class="filter-btn" onclick="hideShow4()">4</button></a>
-                        <a href="#main5"><button class="filter-btn" onclick="hideShow5()">5</button></a>
+                        <a href="#main1"><button class="filter-btn" onclick="hideShow1()" id="button-1">
+                                <h2>Leads Converted</h2>
+                            </button></a>
+                        <a href="#main2"><button class="filter-btn" onclick="hideShow2()">
+                                <h2>Lead Status</h2>
+                            </button></a>
+                        <a href="#main3"><button class="filter-btn" onclick="hideShow3()">
+                                <h2>Leads Working</h2>
+                            </button></a>
+                        <a href="#main4"><button class="filter-btn" onclick="hideShow4()" id="button-4">
+                                <h2>Converted & working</h2>
+                            </button></a>
+                        <a href="#main5"><button class="filter-btn" onclick="hideShow5()" id="button-5">
+                                <h2>Opportunity</h2>
+                            </button></a>
                     </div>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
                     <div class="dashboard">
                         <div class="dashboard-container" style="display: none;" id="main1">
                             <section id="bar-chart">
@@ -208,23 +225,23 @@
                                 <!-- Conversion Rate Table here -->
                             </div>
                         </div>
-                        <br>
-                        <div class="dashboard-container"  style="display: none;" id="main5">
-                            <div class="conversion-rate">
+                    </div>
+                    <br>
+                    <div class="dashboard-container" style="display: none;" id="main5">
+                        <div class="conversion-rate">
 
-                                <div id="funnel-chart">
-                                    <section>
-                                        <h2>
-                                            <center>5. Conversion Rate</center>
-                                        </h2>
-                                    </section>
-                                    <!-- Chart here -->
-                                </div>
-                                <div id="funnel-table">
-                                    <!-- Conversion Rate Table here -->
-                                </div>
-
+                            <div id="funnel-chart">
+                                <section>
+                                    <h2>
+                                        <center>5. Conversion Rate</center>
+                                    </h2>
+                                </section>
+                                <!-- Chart here -->
                             </div>
+                            <div id="funnel-table">
+                                <!-- Conversion Rate Table here -->
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -234,6 +251,8 @@
             <br>
             <div class="more-folio">
                 <a href="#" class="btn">Back</a>
+                <br>
+                <a class="btn" onclick="logout()">Logout</a>
             </div>
             </div>
             </div>
