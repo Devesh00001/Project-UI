@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./CSS/style.css">
     <link rel="stylesheet" href="./CSS/index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="shortcut icon" type="image/x-icon" href=".\Image\salesforce.ico">
 </head>
 
 <body>
@@ -43,8 +44,11 @@
                                 <a href="#credit-section">Contact</a>
                             </li>
                             <li>
-                                <a href="http://127.0.0.1:5501/Testing%20Project%20APIs/index.html" target="_blank"
+                                <a href="http://127.0.0.1:5501/Testing%20Project%20APIs/index.html" target="__blank"
                                     class="active">Data</a>
+                            </li>
+                            <li>
+                                <a class="active" onclick=logout()>Logout</a>
                             </li>
                         </ul>
                     </div>
@@ -88,7 +92,7 @@
                                                 creating and rendering the dashboard. The frontend will interact with
                                                 the server-side Java code to fetch data and display it in the dashboard.
                                             </p>
-                                            <a href=".Documents\High Level Design.docx" target="_blank"
+                                            <a href=".\Documents\High Level Design.docx" target="_blank"
                                                 class="btn small">Read more</a>
                                         </div>
                                     </div>
@@ -150,7 +154,7 @@
                         <a href="#main1"><button class="filter-btn" onclick="hideShow1()" id="button-1">
                                 <h2>Leads Converted</h2>
                             </button></a>
-                        <a href="#main2"><button class="filter-btn" onclick="hideShow2()">
+                        <a href="#main2"><button class="filter-btn" onclick="hideShow2()" id="button-2">
                                 <h2>Lead Status</h2>
                             </button></a>
                         <a href="#main3"><button class="filter-btn" onclick="hideShow3()">
@@ -245,14 +249,13 @@
                         </div>
                     </div>
                 </div>
-
             </div>
 
             <br>
             <div class="more-folio">
                 <a href="#" class="btn">Back</a>
                 <br>
-                <a class="btn" onclick="logout()">Logout</a>
+                <a class="btn" onclick=logout()>Logout</a>
             </div>
             </div>
             </div>

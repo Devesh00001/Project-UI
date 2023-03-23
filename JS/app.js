@@ -32,16 +32,16 @@ function scrollToSection(sectionId) {
     document.getElementById(sectionId).scrollIntoView();
 }
 
-function scrollToSection(e) {
-    e.preventDefault();
-    var targetId = this.getAttribute('href');
-    var targetElement = document.querySelector(targetId);
-    var topOffset = targetElement.offsetTop;
-    var duration = 2000;
-    var easing = function (t) { return t < .5 ? 2 * t * t : -1 + (4 - 2 * t) * t };
+// function scrollToSection(e) {
+//     e.preventDefault();
+//     var targetId = this.getAttribute('href');
+//     var targetElement = document.querySelector(targetId);
+//     var topOffset = targetElement.offsetTop;
+//     var duration = 2000;
+//     var easing = function (t) { return t < .5 ? 2 * t * t : -1 + (4 - 2 * t) * t };
 
-    animateScroll(topOffset, duration, easing);
-}
+//     animateScroll(topOffset, duration, easing);
+// }
 
 function animateScroll(topOffset, duration, easing) {
     var start = window.pageYOffset;
@@ -168,15 +168,29 @@ function hideShow5()
 // }
 
 
+// function logout() {
+//     // Clear the user's session
+//     sessionStorage.clear();
+//     // localStorage.removeItem('http://localhost:8080/');
+//     // Redirect to the login page
+//     window.location.href = "http://localhost:8080/";
+//   }
+
+
 function logout() {
-    // Clear the user's session
+
+    myWindow = window.open("http://127.0.0.1:5501/Testing%20Project%20APIs/index.html");
+    window.location.replace('http://localhost:8080/');
+    myWindow.close() ;
     sessionStorage.clear();
     
-    // Redirect to the login page
-    window.location.href = "http://localhost:8080/";
-  }
+}
 
-
+window.history.forward();
+function noBack() {
+    window.history.forward();
+}
+noBack();
 
 
 

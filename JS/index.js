@@ -147,7 +147,6 @@ d3.json(api)
   });
 
 
-
 //2. Lead Status
 const api2 = 'http://localhost:8080/leadsstatus';
 
@@ -213,24 +212,48 @@ d3.json(api2)
       .text(total);
 
     // Generate chart
-    const g = svg.selectAll(".arc")
+    
+    function startTransition() {
+      const g = svg.selectAll(".arc")
       .data(pie(chartData))
       .enter()
       .append("g")
       .attr("class", "arc");
 
-    g.append("path")
-      .attr("d", arc)
-      .style("fill", function (d) { return color(d.data.label); });
+      g.append("path")
+        .attr("d", arc)
+        .style("fill", function (d) { return color(d.data.label); })
+        .transition() // Add a transition effect to the path
+        .duration(2500) // Set the duration of the transition to 1000 milliseconds (1 second)
+        .attrTween("d", function (d) {
+          const interpolate = d3.interpolate({ startAngle: 0, endAngle: 0 }, d);
+          return function (t) {
+            return arc(interpolate(t));
+          };
+        });
+      g.append("text")
+        .attr("transform", d => `translate(${arc.centroid(d)})`)
+        .attr("dy", "0.35em")
+        .text(function (d) { return d.data.value; })
+        .style("text-anchor", "middle")
+        .style("font-size", "14px")
+        .style("fill", "black")
+        .style("font-weight", "bold")
+    }
+    d3.select("#button-2")
+      .on("click", startTransition);
+    // g.append("path")
+    //   .attr("d", arc)
+    //   .style("fill", function (d) { return color(d.data.label); });
 
-    g.append("text")
-      .attr("transform", d => `translate(${arc.centroid(d)})`)
-      .attr("dy", "0.35em")
-      .text(function (d) { return d.data.value; })
-      .style("text-anchor", "middle")
-      .style("font-size", "14px")
-      .style("fill", "black")
-      .style("font-weight", "bold");
+    // g.append("text")
+    //   .attr("transform", d => `translate(${arc.centroid(d)})`)
+    //   .attr("dy", "0.35em")
+    //   .text(function (d) { return d.data.value; })
+    //   .style("text-anchor", "middle")
+    //   .style("font-size", "14px")
+    //   .style("fill", "black")
+    //   .style("font-weight", "bold");
 
 
     //Table of the chart
@@ -360,7 +383,7 @@ fetch(api4)
         .attr('d', arc)
         .attr('fill', d => color(d.data.label))
         .transition()
-        .duration(3000)
+        .duration(2500)
         .attrTween('d', function (d) {
           const i = d3.interpolate(d.startAngle, d.endAngle);
           return function (t) {
@@ -520,24 +543,10 @@ d3.json(api5)
       .style("font-weight", "bold")
       .text("Probability (%)");
 
-
-    // // Select the bars you want to apply the transition to
-    // var rect = d3.selectAll("rect");
-
-    // // Add a mouseover event listener to each bar
-    // rect.on("mouseover", function (d) {
-    //   // Select the current bar and transition its attributes
-    //   d3.select(this)
-    //     .transition()
-    //     .duration(3000)
-    //     .attr("y", function (d) { return yScale(d.Probability); })
-    //     .attr("height", function (d) { return height - yScale(d.Probability); });
-    // });
-
     // Add the animation
     function startTransition() {
       bars.transition()
-        .duration(3000)
+        .duration(2500)
         .attr("y", function (d) { return yScale(d.Probability); })
         .attr("height", function (d) { return height - yScale(d.Probability); });
     }
@@ -545,8 +554,8 @@ d3.json(api5)
     d3.select("#button-5")
       .on("click", startTransition);
 
-    //Table  
 
+    //Table  
     // Group the data by StageName and calculate the maximum Probability
     var groupedData = d3.rollups(data,
       v => ({

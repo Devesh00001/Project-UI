@@ -1,0 +1,116 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <link rel="stylesheet" href="loginPage.css">
+    <link rel="shortcut icon" type="image/x-icon" href="./img/Salesforce integeration.ico">
+    <script>
+        setTimeout(() => {
+            const box = document.getElementById('box');
+
+            //  removes element from DOM
+            box.style.display = 'none';
+
+            //  hides element (still takes up space on page)
+            // box.style.visibility = 'hidden';
+        }, 7000); // time in milliseconds
+
+    </script>
+
+
+</head>
+
+<body>
+
+    <div class="main">
+        <h1>Enter Credentials</h1>
+        <div id="container">
+            <div id="image">
+                <img src="sign-fillable-PDF-and-online-forms.jpg" alt="">
+
+            </div>
+            <!--<div id="bg"></div>-->
+            <form action="login" method="post" autocomplete="off">
+
+                <h1 class="a11y-hidden">Login Form</h1>
+                <div>
+                    <div id="box">
+                        <h5 style="color:red;"><span th:text="${code}"></span></h5>
+                        <h5 style="color:red;"><span th:text="${error}"></span></h5>
+
+                    </div>
+                    <label class="Email">
+                        <input type="text" class="text" name="email" placeholder="Email" required
+                            pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$" />
+                        <span class="required">Email</span>
+                    </label>
+                </div>
+
+                <input type="checkbox" name="show-password" class="show-password a11y-hidden" id="show-password"
+                    tabindex="3" />
+                <label class="label-show-password" for="show-password">
+                    <span>Show Password</span>
+                </label>
+                <div>
+                    <label class="label-password">
+                        <input type="text" class="text" name="password" placeholder="Password" tabindex="2" required />
+                        <span class="required">Password</span>
+                    </label>
+                </div>
+                <div>
+                    <label for="clientid">
+                        <input type="text" placeholder="ClientId" id="clientid" name="clientid" required>
+                        <span class="required">ClientId</span>
+                    </label>
+                </div>
+
+                <div>
+                    <label for="clientsecret">
+                        <input type="text" placeholder="ClientSecret" id="clientsecret" name="clientsecret" required>
+                        <span class="required">ClientSecret</span>
+                    </label>
+
+                </div>
+
+                <input type="submit" onclick="mainFunction()" value="Log In" />
+
+
+
+
+                <figure aria-hidden="true">
+                    <div class="person-body"></div>
+                    <div class="neck skin"></div>
+                    <div class="head skin">
+                        <div class="eyes"></div>
+                        <div class="mouth"></div>
+                    </div>
+                    <div class="hair"></div>
+                    <div class="ears"></div>
+                    <div class="shirt-1"></div>
+                    <div class="shirt-2"></div>
+                </figure>
+            </form>
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+    </div>
+
+
+
+    <script src="loginPage.js"></script>
+</body>
+
+
+
+</html>
